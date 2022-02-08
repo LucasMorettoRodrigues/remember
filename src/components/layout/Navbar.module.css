@@ -42,8 +42,3 @@
     transform: translate(0px, -5px);
     color: white;
 }
-
-.navbar ul li a:focus {
-    transform: translate(0px, -5px);
-    color: white;
-}

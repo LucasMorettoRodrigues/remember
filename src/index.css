@@ -4,3 +4,8 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
 }
+
+body {
+  background-color: #e0e0e0;
+  min-height: 100%;
+}
