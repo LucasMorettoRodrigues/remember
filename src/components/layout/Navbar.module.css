@@ -1,0 +1,49 @@
+.navbar {
+    background-color: rgb(34, 170, 136);
+}
+
+.navbar_container {
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar h1 {
+    font-size: 3em;
+    color: #222;
+}
+
+.navbar ul {
+    flex: 1;
+    text-align: right;
+}
+
+.navbar ul li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 2em;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.navbar ul li a {
+    display: inline-block;
+    color: rgb(0, 61, 25);
+    transition: 0.5s;
+}
+
+.navbar ul li a:hover {
+    transform: translate(0px, -5px);
+    color: white;
+}
+
+.navbar ul li a:focus {
+    transform: translate(0px, -5px);
+    color: white;
+}
