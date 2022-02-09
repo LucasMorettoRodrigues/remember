@@ -1,3 +1,28 @@
 .main_content {
     padding: 2em;
+    flex: 1;
+}
+
+.top_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.top_container button {
+    padding: 0.5em 2em;
+    border: 3px solid green;
+    background-color: inherit;
+    color: green;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.top_container button:hover {
+    background-color: green;
+    color: white;
 }

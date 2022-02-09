@@ -1,4 +1,8 @@
 .project_button {
+    list-style: none;
+}
+
+.project_button button {
     background-color: inherit;
     border: none;
     font-size: 1.2em;
@@ -6,6 +10,6 @@
     margin-left: 0.2em;
 }
 
-.project_button:hover {
+.project_button button:hover {
     font-weight: bold;
 }
