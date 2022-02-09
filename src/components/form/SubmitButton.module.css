@@ -3,11 +3,13 @@
 }
 
 .button input {
-    padding: 1em 0;
+    padding: 0.5em 0;
     width: 100%;
     border-radius: 5px;
     border: none;
     color: rgb(0, 61, 25);
     border: 1px solid rgb(34, 170, 136);
     background-color: rgb(34, 170, 136);
+    font-size: 1em;
+    font-weight: bold;
 }
