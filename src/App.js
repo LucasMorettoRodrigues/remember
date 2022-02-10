@@ -1,22 +1,44 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import Projects from './components/pages/Projects';
+import Project from './components/pages/Project';
+
+import { AuthProvider, AuthContext } from './contexts/auth'
+import { useContext } from 'react';
 
 function App() {
+  
+  const Private = ({ children }) => {
+    const { authenticated, loading } = useContext(AuthContext)
+
+    if(loading) {
+      return <div className="loading">Carregando...</div>
+    }
+
+    if(!authenticated) {
+      return <Navigate to="/Login/" />
+    }
+
+    return children
+  }
+
   return (
     <Router>
-      <Navbar />
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/projects' element={<Projects />} />
-        </Routes>
-      <Footer />
+      <AuthProvider>
+        <Navbar />
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/projects' element={<Private><Projects /></Private>} />
+            <Route path='/project/:id' element={<Private><Project /></Private>} />
+          </Routes>
+        <Footer />
+      </AuthProvider>
     </Router>
   );
 }
