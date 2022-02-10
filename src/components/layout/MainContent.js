@@ -4,7 +4,7 @@ import TaskCard from '../tasks/TaskCard'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getProjectTasks } from '../../services/api'
+import { getProjectTasks, deleteTask } from '../../services/api'
 
 const MainContent = () => {
     
@@ -25,6 +25,12 @@ const MainContent = () => {
         return <div>Loading...</div>
     }
 
+    const handleDelete = async (e) => {
+        await deleteTask( id, e.currentTarget.id )
+        const data = await getProjectTasks(id)
+        setTasks( data.data.tasks )
+    }
+
     return(
         <section className={styles.main_content}>
             <div className={styles.top_container}>
@@ -34,7 +40,7 @@ const MainContent = () => {
             </div>
             <ul>
                 {tasks.map((task) => (
-                    <TaskCard key={task._id} id={task._id} task={task.task} date={task.date}/>
+                    <TaskCard handleDelete={handleDelete} key={task._id} taskId={task._id} task={task.task} date={task.date}/>
                 ))}
             </ul>
         </section>
