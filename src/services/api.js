@@ -12,6 +12,10 @@ export const getProjects = async => {
     return api.get('/api/v1/projects')
 }
 
+export const createProject = async (name)=> {
+    return api.post(`/api/v1/projects/`, { name })
+}
+
 export const getProjectTasks = async (id)=> {
     return api.get(`/api/v1/project/${id}/tasks`)
 }

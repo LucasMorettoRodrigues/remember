@@ -6,12 +6,16 @@
 .top_container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 2em;
+}
+
+.top_container h2 {
+    flex: 1;
 }
 
 .top_container button {
     padding: 0.5em 2em;
+    margin-right: 1em;
     border: 3px solid green;
     background-color: inherit;
     color: green;

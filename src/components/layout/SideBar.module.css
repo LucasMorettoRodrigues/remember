@@ -17,3 +17,49 @@
     margin: 0.5em 0;
     border-bottom: 1px solid black;
 }
+
+.new_project {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 300px;
+    padding: 1em;
+
+}
+
+.new_project div {
+    position:relative;
+    display: flex;
+    gap: 20px;
+}
+
+.new_project button {
+    flex-basis: 50%;
+    padding: 0.5em 0;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.red {
+    background-color: rgb(206, 105, 113);
+}
+
+.green {
+    background-color: rgb(34, 170, 136);
+}
+
+.new_project_button {
+    background-color: inherit;
+    border: none;
+    border-radius: 15px;
+    font-size: 1em;
+    margin-top: 2em;
+}
+
+.new_project_button:hover {
+    font-weight: bold;
+}

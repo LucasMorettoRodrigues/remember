@@ -36,6 +36,7 @@ const MainContent = () => {
             <div className={styles.top_container}>
                 <h2>Project Name</h2>
                 {console.log(tasks)}
+                <button> Rename Project</button> 
                 <button> New Task</button> 
             </div>
             <ul>
