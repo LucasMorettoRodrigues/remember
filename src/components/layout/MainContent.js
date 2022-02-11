@@ -5,7 +5,7 @@ import NewTask from '../tasks/NewTask'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getAllTasks, deleteTask, createTask } from '../../services/api'
+import { getAllTasks, deleteTask, createTask, updateTask } from '../../services/api'
 
 const MainContent = () => {
     
@@ -37,11 +37,6 @@ const MainContent = () => {
         id ? setTasks(resp.filter((resp) => resp.project === id )) : setTasks( resp )
     }
 
-    const handleDelete = async (e) => {
-        await deleteTask( id, e.currentTarget.id )
-        getTasks()
-    }
-
     const handleCreateTask = async (e) => {
         e.preventDefault()
         await createTask(id, taskName, taskDate)
@@ -49,11 +44,23 @@ const MainContent = () => {
         getTasks()
     }
 
+    const handleUpdateTask = async (e) => {
+        await updateTask(e.target.id, e.target.checked ? true : false)
+        getTasks()
+    }
+
+    const handleDelete = async (e) => {
+        await deleteTask(e.currentTarget.id)
+        getTasks()
+    }
+
     return(
         <section className={styles.main_content}>
             <div className={styles.top_container}>
-                <h2>Tasks</h2>   
-                <button onClick={() => setNewTaskForm(true)}> New Task </button>
+                <h2>Tasks</h2>
+                {id && 
+                    <button onClick={() => setNewTaskForm(true)}> New Task </button>
+                }
             </div>
             {newTaskForm && 
                 <NewTask 
@@ -65,7 +72,14 @@ const MainContent = () => {
             }
             <ul>
                 {tasks.map((task) => (
-                    <TaskCard handleDelete={handleDelete} key={task._id} taskId={task._id} task={task.task} date={task.date}/>
+                    <TaskCard 
+                        handleDelete={handleDelete} 
+                        key={task._id} taskId={task._id} 
+                        task={task.task} 
+                        date={task.date}
+                        completed={task.completed}
+                        handleComplete={handleUpdateTask}
+                    />
                 ))}
             </ul>
         </section>

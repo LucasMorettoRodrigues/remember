@@ -43,7 +43,11 @@ const Sidebar = () => {
 
     return(
         <aside className={styles.bar}>
-            <ProjectButton text="All Tasks"/>        
+            <ProjectButton 
+                text="All Tasks" 
+                handleOnClick={() => navigate(`../project`)}
+                active={window.location.pathname === `/project` ? "active" : null}
+            />
             <h2>Projects</h2>
             <ul>
                 {

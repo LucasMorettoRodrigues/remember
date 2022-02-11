@@ -24,6 +24,10 @@ export const createTask = async (id, task, date) => {
     return api.post(`/api/v1/project/${id}/tasks`, { task, date })
 }
 
-export const deleteTask = async (id, taskId)=> {
-    return api.delete(`/api/v1/project/${id}/tasks/${taskId}`)
+export const updateTask = async (taskId, completed)=> {
+    return api.patch(`/api/v1/project/tasks/${taskId}`, { completed })
+}
+
+export const deleteTask = async (taskId)=> {
+    return api.delete(`/api/v1/project/tasks/${taskId}`)
 }

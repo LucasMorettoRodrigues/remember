@@ -6,6 +6,11 @@
     list-style: none;
 }
 
+.completed {
+    color: rgba(0, 0, 0, 0.192);
+    background-color: rgb(243, 243, 243);
+}
+
 .task_container {
     display: flex;
     align-items: center;
@@ -28,7 +33,7 @@
 }
 
 .task_container button {
-    color: red;
+    color: rgb(133, 133, 133);
     margin-left: auto;
     font-size: 1.2em;
     background-color: inherit;
@@ -38,5 +43,6 @@
 }
 
 .task_container button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    color: red;
 }

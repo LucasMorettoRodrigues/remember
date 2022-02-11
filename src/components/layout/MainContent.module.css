@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 2em;
+    height: 50px;
 }
 
 .top_container h2 {
