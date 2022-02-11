@@ -20,8 +20,8 @@ export const getAllTasks = async () => {
     return api.get(`/api/v1/project/tasks`)
 }
 
-export const getProjectTasks = async (id)=> {
-    return api.get(`/api/v1/project/${id}/tasks`)
+export const createTask = async (id, task, date) => {
+    return api.post(`/api/v1/project/${id}/tasks`, { task, date })
 }
 
 export const deleteTask = async (id, taskId)=> {

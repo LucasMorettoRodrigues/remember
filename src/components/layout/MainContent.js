@@ -5,7 +5,7 @@ import Input from '../form/Input'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getAllTasks, deleteTask } from '../../services/api'
+import { getAllTasks, deleteTask, createTask } from '../../services/api'
 
 const MainContent = () => {
     
@@ -31,17 +31,22 @@ const MainContent = () => {
         return <div>Loading...</div>
     }
 
-    const handleDelete = async (e) => {
-        await deleteTask( id, e.currentTarget.id )
+    const getTasks = async () => {
         const data = await getAllTasks()
         const resp = data.data.tasks
         id ? setTasks(resp.filter((resp) => resp.project === id )) : setTasks( resp )
     }
 
-    const createTask = (e) => {
+    const handleDelete = async (e) => {
+        await deleteTask( id, e.currentTarget.id )
+        getTasks()
+    }
+
+    const handleCreateTask = async (e) => {
         e.preventDefault()
-        console.log(`Create ${taskName}, date: ${taskDate}`);
+        await createTask(id, taskName, taskDate)
         setNewTaskForm(false)
+        getTasks()
     }
 
     return(
@@ -52,7 +57,7 @@ const MainContent = () => {
             </div>
             {newTaskForm && 
                 <div>
-                    <form onSubmit={createTask}>
+                    <form onSubmit={handleCreateTask}>
                         <h2>New Task</h2>
                         <Input id="task" text="Task" onChange={(e) => setTaskName(e.target.value)}/>
                         <input type="date" onChange={(e) => setTaskDate(e.target.value)}/>
