@@ -4,7 +4,6 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
-import Projects from './components/pages/Projects';
 import Project from './components/pages/Project';
 
 import { AuthProvider, AuthContext } from './contexts/auth'
@@ -34,7 +33,7 @@ function App() {
             <Route exact path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/projects' element={<Private><Projects /></Private>} />
+            <Route path='/project' element={<Private><Project /></Private>} />
             <Route path='/project/:id' element={<Private><Project /></Private>} />
           </Routes>
         <Footer />

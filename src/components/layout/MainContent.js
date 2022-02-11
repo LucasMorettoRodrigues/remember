@@ -4,7 +4,7 @@ import TaskCard from '../tasks/TaskCard'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getProjectTasks, deleteTask } from '../../services/api'
+import { getAllTasks, deleteTask } from '../../services/api'
 
 const MainContent = () => {
     
@@ -15,11 +15,13 @@ const MainContent = () => {
 
     useEffect(() => {
         (async () => {
-            const data = await getProjectTasks(id)
-            setTasks( data.data.tasks )
+            const data = await getAllTasks()
+            const resp = data.data.tasks
+            id ? setTasks(resp.filter((resp) => resp.project === id )) : setTasks( resp )
             setLoading(false)
         })()
-    }, [ id ])
+        }
+    , [ id ])
 
     if(loading) {
         return <div>Loading...</div>
@@ -27,15 +29,15 @@ const MainContent = () => {
 
     const handleDelete = async (e) => {
         await deleteTask( id, e.currentTarget.id )
-        const data = await getProjectTasks(id)
-        setTasks( data.data.tasks )
+        const data = await getAllTasks()
+        const resp = data.data.tasks
+        id ? setTasks(resp.filter((resp) => resp.project === id )) : setTasks( resp )
     }
 
     return(
         <section className={styles.main_content}>
             <div className={styles.top_container}>
-                <h2>Project Name</h2>
-                {console.log(tasks)}
+                <h2>Project Name</h2>   
                 <button> Rename Project</button> 
                 <button> New Task</button> 
             </div>

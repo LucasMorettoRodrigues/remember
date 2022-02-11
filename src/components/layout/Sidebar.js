@@ -45,7 +45,6 @@ const Sidebar = () => {
         <aside className={styles.bar}>
             <ProjectButton text="All Tasks"/>        
             <h2>Projects</h2>
-            {projects.map((project) => console.log(project))}
             <ul>
                 {
                     projects.map((project) => (
