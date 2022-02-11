@@ -1,6 +1,6 @@
 import styles from './MainContent.module.css'
 import TaskCard from '../tasks/TaskCard'
-import Input from '../form/Input'
+import NewTask from '../tasks/NewTask'
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
@@ -52,19 +52,16 @@ const MainContent = () => {
     return(
         <section className={styles.main_content}>
             <div className={styles.top_container}>
-                <h2>Project Name</h2>   
+                <h2>Tasks</h2>   
                 <button onClick={() => setNewTaskForm(true)}> New Task </button>
             </div>
             {newTaskForm && 
-                <div>
-                    <form onSubmit={handleCreateTask}>
-                        <h2>New Task</h2>
-                        <Input id="task" text="Task" onChange={(e) => setTaskName(e.target.value)}/>
-                        <input type="date" onChange={(e) => setTaskDate(e.target.value)}/>
-                        <button type="submit">Create Task</button>
-                        <button onClick={() => setNewTaskForm(false)}>Close</button>
-                    </form>
-                </div>
+                <NewTask 
+                    handleClose={() => setNewTaskForm(false)}
+                    handleSubmit={handleCreateTask}
+                    handleTaskChange={(e) => setTaskName(e.target.value)}
+                    handleDateChange={(e) => setTaskDate(e.target.value)}
+                />
             }
             <ul>
                 {tasks.map((task) => (

@@ -29,12 +29,12 @@
 
 .new_project div {
     position:relative;
+    justify-content: space-between;
     display: flex;
-    gap: 20px;
 }
 
 .new_project button {
-    flex-basis: 50%;
+    flex-basis: 49%;
     padding: 0.5em 0;
     border-radius: 5px;
     color: white;
