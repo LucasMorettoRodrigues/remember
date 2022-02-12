@@ -5,13 +5,17 @@ import NewTask from '../form/NewTask'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
+import { useProjects } from '../../contexts/projects'
+
 import { getAllTasks, deleteTask, createTask, updateTask, deleteProject } from '../../services/api'
 
 const MainContent = () => {
 
+    const { projects } = useProjects()
+
     const navigate = useNavigate()
     
-    const { id } = useParams() //Pega id vindo da URL 
+    const { id } = useParams()
 
     const [tasks, setTasks] = useState()
     const [newTaskForm, setNewTaskForm] = useState(false)
@@ -70,7 +74,7 @@ const MainContent = () => {
     return(
         <section className={styles.main_content}>
             <div className={styles.top_container}>
-                <h2>Tasks</h2>
+                <h2>{id ? projects.find(p => p._id === id).name : "All Tasks"}</h2>
                 {id && 
                     <div>
                         <button className={styles.green} onClick={() => setNewTaskForm(true)}> New Task </button>

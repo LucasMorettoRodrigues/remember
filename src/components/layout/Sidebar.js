@@ -6,17 +6,18 @@ import ProjectButton from '../layout/ProjectButton'
 import NewProject from '../form/NewProject'
 
 import { getProjects, createProject } from '../../services/api'
+import { useProjects } from '../../contexts/projects';
 
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-
 const Sidebar = () => {
+
+    const { projects, setProjects } = useProjects()
 
     const navigate = useNavigate()
     const {id} = useParams()
 
-    const [projects, setProjects] = useState()
     const [loading, setLoading] = useState(true)
     const [newProjectName, setNewProjectName] = useState('')
     const [showCreateProjectForm, setShowCreateProjectForm] = useState(false)
@@ -27,7 +28,7 @@ const Sidebar = () => {
             setProjects( data.data.projects )
             setLoading(false)
         })()
-    }, [id])
+    }, [id, setProjects])
 
     const handleCreateProject = async (e) => {
         e.preventDefault()
@@ -45,8 +46,10 @@ const Sidebar = () => {
         <aside className={styles.bar}>
             <ul>
                 <ProjectButton 
-                    text="All Tasks" 
-                    handleOnClick={() => navigate(`../project`)}
+                    name="All Tasks" 
+                    handleOnClick={() => {
+                        navigate(`../project`)
+                    }}
                     active={window.location.pathname === `/project` ? "active" : null}
                 />
             </ul>
@@ -58,8 +61,10 @@ const Sidebar = () => {
                             key={project._id} 
                             active={window.location.pathname === `/project/${project._id}` ? "active" : null}
                             id={project._id} 
-                            text={project.name} 
-                            handleOnClick={() => navigate(`../project/${project._id}`)}
+                            name={project.name} 
+                            handleOnClick={() => {
+                                navigate(`../project/${project._id}`)
+                            }}
                         />
                     ))
                 }

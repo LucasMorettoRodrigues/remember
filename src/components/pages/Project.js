@@ -3,12 +3,16 @@ import MainContent from "../layout/MainContent"
 
 import styles from "./Projects.module.css"
 
+import ProjectsProvider from "../../contexts/projects"
+
 const Project = () => {
 
     return (
         <main className={styles.main_container}>
-            <Sidebar/>
-            <MainContent />
+            <ProjectsProvider>
+                <Sidebar/>
+                <MainContent />  
+            </ProjectsProvider>
         </main>
     )
 }
