@@ -22,8 +22,8 @@ const Login = () => {
             <div className={styles.form}>
                 <h2>Sign in</h2>
                 <form onSubmit={handleSubmit}>
-                    <Input id="user" text="User" onChange={(e) => setUserName(e.target.value)}/>
-                    <Input id="password" text="Password" onChange={(e) => setPassword(e.target.value)}/>
+                    <Input type="text" id="user" text="User" onChange={(e) => setUserName(e.target.value)}/>
+                    <Input type="text" id="password" text="Password" onChange={(e) => setPassword(e.target.value)}/>
                     <SubmitButton text="Sing in"/>
                 </form>
             </div>

@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const recoveredUser = localStorage.getItem('user')
-        const token= localStorage.getItem('token')
+        const token = localStorage.getItem('token')
 
         if(recoveredUser) {
             setUser(JSON.parse(recoveredUser))
@@ -23,7 +23,6 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (userName, password) => {
         const response = await createSession(userName, password)
-        console.log("login", response.data)
         const loggedUser = response.data.user
         const token = response.data.token
         localStorage.setItem("user", JSON.stringify(loggedUser))

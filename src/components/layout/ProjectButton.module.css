@@ -1,19 +1,37 @@
-.project_button {
+.project_container {
+    width: 100%;
+    align-items: center;
     list-style: none;
+    cursor: pointer;
 }
 
-.project_button button {
+.project_container:hover {
+    background-color: rgb(33, 153, 123);
+}
+
+.project_container.selected {
+    background-color: rgb(32, 143, 115);
+}
+
+.delete_btn,
+.project_btn {
     background-color: inherit;
     border: none;
     font-size: 1.2em;
-    margin-bottom: 0.6em;
-    margin-left: 0.2em;
+    margin: 0.5em 0;
 }
 
-.project_button button:hover {
+.project_btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-left: 1.5em;
+}
+
+.project_btn.selected {
     font-weight: bold;
 }
 
-.selected {
-    font-weight: bold;
+.icon {
+
 }

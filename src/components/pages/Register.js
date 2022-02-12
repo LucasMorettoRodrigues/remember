@@ -9,8 +9,8 @@ const Register = () => {
             <div className={styles.form}>
                 <h2>Sign up</h2>
                 <form action="">
-                    <Input id="user" text="User"/>
-                    <Input id="password" text="Password"/>
+                    <Input type="text" id="user" text="User"/>
+                    <Input type="text" id="password" text="Password"/>
                     <SubmitButton text="Sing up"/>
                 </form>
             </div>

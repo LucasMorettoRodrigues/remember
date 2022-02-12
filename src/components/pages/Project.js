@@ -7,7 +7,7 @@ const Project = () => {
 
     return (
         <main className={styles.main_container}>
-            <Sidebar />
+            <Sidebar/>
             <MainContent />
         </main>
     )

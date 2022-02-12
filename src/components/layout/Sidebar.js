@@ -1,16 +1,20 @@
 import styles from './SideBar.module.css'
 
+import { AiFillPlusCircle } from "react-icons/ai";
+
 import ProjectButton from '../layout/ProjectButton'
-import Input from '../form/Input'
+import NewProject from '../form/NewProject'
 
 import { getProjects, createProject } from '../../services/api'
 
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+
 
 const Sidebar = () => {
 
     const navigate = useNavigate()
+    const {id} = useParams()
 
     const [projects, setProjects] = useState()
     const [loading, setLoading] = useState(true)
@@ -23,17 +27,9 @@ const Sidebar = () => {
             setProjects( data.data.projects )
             setLoading(false)
         })()
-    }, [])
+    }, [id])
 
-    if(loading) {
-        return <div>Loading...</div>
-    }
-
-    const showNewProjectForm = () => {
-        setShowCreateProjectForm(true)
-    }
-
-    const createNewProject = async (e) => {
+    const handleCreateProject = async (e) => {
         e.preventDefault()
         await createProject(newProjectName);
         const data = await getProjects()
@@ -41,13 +37,19 @@ const Sidebar = () => {
         setShowCreateProjectForm(false)
     }
 
+    if(loading) {
+        return <></>
+    }
+
     return(
         <aside className={styles.bar}>
-            <ProjectButton 
-                text="All Tasks" 
-                handleOnClick={() => navigate(`../project`)}
-                active={window.location.pathname === `/project` ? "active" : null}
-            />
+            <ul>
+                <ProjectButton 
+                    text="All Tasks" 
+                    handleOnClick={() => navigate(`../project`)}
+                    active={window.location.pathname === `/project` ? "active" : null}
+                />
+            </ul>
             <h2>Projects</h2>
             <ul>
                 {
@@ -62,17 +64,19 @@ const Sidebar = () => {
                     ))
                 }
             </ul>
-            {
-                showCreateProjectForm ? 
-                    <form className={styles.new_project} onSubmit={createNewProject}>
-                        <Input id="newProjectName" text="Project Name" onChange={(e) => setNewProjectName(e.target.value)}/>
-                        <div>
-                            <button className={styles.red} onClick={() => setShowCreateProjectForm(false)}>Close</button>
-                            <button className={styles.green} type='submit' value="Create">Create</button>
-                        </div>
-                    </form> :
-                    <button className={styles.new_project_button} onClick={showNewProjectForm}>+ New Project</button>
-            }
+            { showCreateProjectForm &&
+                <NewProject 
+                    handleSubmit={handleCreateProject} 
+                    handleClose={() => setShowCreateProjectForm(false)}
+                    handleNameChange={(e) => setNewProjectName(e.target.value)}
+                />
+            }       
+            <button 
+                className={styles.new_project_button} 
+                onClick={() => setShowCreateProjectForm(true)}>
+                <AiFillPlusCircle className={styles.icon} />
+                <p>New Project</p>
+            </button>
         </aside>
     )
 }

@@ -16,6 +16,10 @@ export const createProject = async (name)=> {
     return api.post(`/api/v1/projects/`, { name })
 }
 
+export const deleteProject = async (id)=> {
+    return api.delete(`/api/v1/projects/${id}`)
+}
+
 export const getAllTasks = async () => {
     return api.get(`/api/v1/project/tasks`)
 }

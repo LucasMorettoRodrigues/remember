@@ -1,5 +1,5 @@
 .main_content {
-    padding: 2em;
+    padding: 2em 4em 4em 4em;
     flex: 1;
 }
 
@@ -17,9 +17,7 @@
 .top_container button {
     padding: 0.5em 2em;
     margin-right: 1em;
-    border: 3px solid green;
     background-color: inherit;
-    color: green;
     font-weight: bold;
     border-radius: 5px;
     font-size: 1em;
@@ -27,7 +25,22 @@
     transition: .2s;
 }
 
-.top_container button:hover {
+.green {
+    color: green;
+    border: 3px solid green;
+}
+
+.green:hover {
     background-color: green;
+    color: white;
+}
+
+.red {
+    color: rgb(255, 67, 67);
+    border: 3px solid rgb(255, 67, 67);
+}
+
+.red:hover {
+    background-color: rgb(255, 67, 67);
     color: white;
 }

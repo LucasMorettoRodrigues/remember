@@ -1,12 +1,17 @@
 import styles from '../layout/ProjectButton.module.css'
 
-const ProjectButton = ({ text, id, active, handleOnClick }) => {
+import { AiOutlineDoubleRight } from "react-icons/ai";
 
+const ProjectButton = ({ text, id, active, handleOnClick }) => {
     return (
-        <li className={styles.project_button}>
-            <button className={active ? styles.selected : null} onClick={handleOnClick}>
+        <li 
+            className={`${styles.project_container} ${active ? styles.selected : null}`} 
+            onClick={handleOnClick}
+        >
+            <div className={styles.project_btn}>
+                <AiOutlineDoubleRight/> 
                 {text}
-            </button>
+            </div>
         </li>
     )
 }
