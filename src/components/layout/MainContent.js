@@ -70,7 +70,7 @@ const MainContent = () => {
     return(
         <section className={styles.main_content}>
             <div className={styles.top_container}>
-                <h2>// Tasks</h2>
+                <h2>Tasks</h2>
                 {id && 
                     <div>
                         <button className={styles.green} onClick={() => setNewTaskForm(true)}> New Task </button>
