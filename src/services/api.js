@@ -20,8 +20,10 @@ export const deleteProject = async (id)=> {
     return api.delete(`/api/v1/projects/${id}`)
 }
 
-export const getAllTasks = async () => {
-    return api.get(`/api/v1/project/tasks`)
+export const getAllTasks = async (id) => {
+    return id 
+        ? api.get(`/api/v1/project/tasks/?project=${id}`) 
+        : api.get(`/api/v1/project/tasks`) 
 }
 
 export const createTask = async (id, task, date) => {

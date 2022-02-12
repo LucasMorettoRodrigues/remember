@@ -17,7 +17,7 @@ const MainContent = () => {
     
     const { id } = useParams()
 
-    const [tasks, setTasks] = useState()
+    const [tasks, setTasks] = useState([])
     const [newTaskForm, setNewTaskForm] = useState(false)
     const [loading, setLoading] = useState(true)
     const [taskName, setTaskName] = useState("")
@@ -25,18 +25,16 @@ const MainContent = () => {
 
     useEffect(() => {
         (async () => {
-            const data = await getAllTasks()
-            const resp = data.data.tasks
-            id ? setTasks(resp.filter((resp) => resp.project === id )) : setTasks( resp )
+            const data = await getAllTasks( id )
+            setTasks(data.data.tasks)
             setLoading(false)
         })()
         }
     , [ id ])
 
     const getTasks = async () => {
-        const data = await getAllTasks()
-        const resp = data.data.tasks
-        id ? setTasks(resp.filter((resp) => resp.project === id )) : setTasks( resp )
+        const data = await getAllTasks(id)
+        setTasks(data.data.tasks)
         setLoading(false)
     }
 
