@@ -10,12 +10,19 @@ import styles from "./Sign.module.css"
 const Login = () => {
     const { login } = useContext(AuthContext)
 
-    const [userName, setUserName] = useState("")
-    const [password, setPassword] = useState("")
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        login(userName, password)
+
+        try {
+            await login(userName, password)
+        } catch {
+            setError('Failed to login.')
+        }
+        
     }
 
     return (
@@ -25,6 +32,7 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <Input type="text" id="user" text="User" onChange={(e) => setUserName(e.target.value)}/>
                     <Input type="text" id="password" text="Password" onChange={(e) => setPassword(e.target.value)}/>
+                    { error && <p>{error}</p>}
                     <SubmitButton text="Sing in"/>
                 </form>
             </div>

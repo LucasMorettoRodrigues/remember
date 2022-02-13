@@ -1,22 +1,29 @@
 import Input from "../form/Input"
 import SubmitButton from "../form/SubmitButton"
 
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState, useContext } from "react"
 import { registerUser } from "../../services/api"
+import { AuthContext } from '../../contexts/auth'
 
 import styles from "./Sign.module.css"
 
 const Register = () => {
 
-    const navigate = useNavigate()
+    const { login } = useContext(AuthContext)
+
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        registerUser(user, password)
-        navigate('/')
+
+        try {
+            await registerUser(user, password)
+            await login(user, password)
+        } catch {   
+            setError('Failed to register.')     
+        }
     } 
 
     return (
@@ -39,6 +46,7 @@ const Register = () => {
                         minLength={6}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    { error && <p>{error}</p>}
                     <SubmitButton text="Sing up"/>
                 </form>
             </div>
