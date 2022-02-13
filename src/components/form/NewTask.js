@@ -6,7 +6,7 @@ const NewTask = ({ handleClose, handleSubmit, handleTaskChange, handleDateChange
         <div className={styles.form_window}>
             <form className={styles.new_project} onSubmit={handleSubmit}>
                 <h3>New Task</h3>
-                <Input type="text" id="task" text="Task Name" onChange={handleTaskChange} />
+                <Input type="text" id="task" text="Task Name" maxLength={40} onChange={handleTaskChange} />
                 <Input type="date" id="date" text="Date" onChange={handleDateChange} />
                 <div>
                     <button className={styles.red} onClick={handleClose}>Close</button>

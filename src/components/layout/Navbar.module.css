@@ -42,3 +42,8 @@
     transform: translate(0px, -5px);
     color: white;
 }
+
+.navbar ul li p {
+    font-style: italic;
+    color: rgb(0, 61, 25);
+}

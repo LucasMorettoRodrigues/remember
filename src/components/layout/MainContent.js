@@ -12,9 +12,7 @@ import { getAllTasks, deleteTask, createTask, updateTask, deleteProject } from '
 const MainContent = () => {
 
     const { projects } = useProjects()
-
     const navigate = useNavigate()
-    
     const { id } = useParams()
 
     const [tasks, setTasks] = useState([])
@@ -63,6 +61,7 @@ const MainContent = () => {
         tasks.map((task) => task.project === id ? deleteTask(task._id) : null )
         await deleteProject(id)
         navigate('/project')
+        setLoading(false)
     }
 
     if(loading) {

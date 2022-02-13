@@ -5,6 +5,7 @@ import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import Project from './components/pages/Project';
+import PageNotFound from './components/pages/PageNotFound';
 
 import { AuthProvider, AuthContext } from './contexts/auth'
 import { useContext } from 'react';
@@ -15,7 +16,7 @@ function App() {
     const { authenticated, loading } = useContext(AuthContext)
 
     if(loading) {
-      return <div className="loading">Carregando...</div>
+      return <div className="loading">Loading...</div>
     }
 
     if(!authenticated) {
@@ -35,6 +36,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/project' element={<Private><Project /></Private>} />
             <Route path='/project/:id' element={<Private><Project /></Private>} />
+            <Route path='/*'  element={<PageNotFound />} />
           </Routes>
         <Footer />
       </AuthProvider>

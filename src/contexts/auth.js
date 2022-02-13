@@ -22,15 +22,14 @@ export const AuthProvider = ({ children }) => {
 
 
     const login = async (userName, password) => {
-        const response = await createSession(userName, password)
-        const loggedUser = response.data.user
-        const token = response.data.token
-        localStorage.setItem("user", JSON.stringify(loggedUser))
-        localStorage.setItem("token", token)
-
-        api.defaults.headers.Authorization = `Bearer ${token}`
-        setUser(loggedUser)
-        navigate("/project")
+            const response = await createSession(userName, password)
+            const loggedUser = response.data.user
+            const token = response.data.token
+            localStorage.setItem("user", JSON.stringify(loggedUser))
+            localStorage.setItem("token", token)
+            api.defaults.headers.Authorization = `Bearer ${token}`
+            setUser(loggedUser)
+            navigate('/project')
     }
     
     const logout = () => {

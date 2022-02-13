@@ -13,3 +13,8 @@
 .form h2 {
     margin-bottom: 1em;
 }
+
+.form p {
+    font-size: 0.8em;
+    color: red;
+}

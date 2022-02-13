@@ -14,6 +14,12 @@
     color: #222;
 }
 
+.col_2 h1,
+.col_2 p,
+.col_2 button {
+    margin-left: 120px;
+}
+
 .col_2 h1 {
     font-size: 4em;
 }
@@ -23,10 +29,11 @@
 }
 
 .col_2 img {
-    max-width: 80%;
+    max-width: 70%;
+    margin-right: 120px;
     padding: 50px 0;
     transform: rotate(10deg);
-    margin-left: 200px;
+    margin-left: 130px;
 }
 
 .row button {

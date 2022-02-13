@@ -8,6 +8,10 @@ export const createSession = async (name, password) => {
     return api.post('/api/v1/auth/login', { name, password })
 }
 
+export const registerUser = async (name, password) => {
+    return api.post('/api/v1/auth/register', {name, password})
+}
+
 export const getProjects = async => {
     return api.get('/api/v1/projects')
 }

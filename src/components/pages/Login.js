@@ -4,6 +4,7 @@ import { AuthContext } from '../../contexts/auth'
 
 import Input from "../form/Input"
 import SubmitButton from "../form/SubmitButton"
+
 import styles from "./Sign.module.css"
 
 const Login = () => {
@@ -14,13 +15,13 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        login(userName, password);
+        login(userName, password)
     }
 
     return (
         <div className={styles.container}>  
             <div className={styles.form}>
-                <h2>Sign in</h2>
+                <h2>Sign In</h2>
                 <form onSubmit={handleSubmit}>
                     <Input type="text" id="user" text="User" onChange={(e) => setUserName(e.target.value)}/>
                     <Input type="text" id="password" text="Password" onChange={(e) => setPassword(e.target.value)}/>
