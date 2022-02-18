@@ -16,7 +16,7 @@ const Sidebar = () => {
     const { projects, setProjects } = useProjects()
 
     const navigate = useNavigate()
-    const {id} = useParams()
+    const { id } = useParams()
 
     const [loading, setLoading] = useState(true)
     const [newProjectName, setNewProjectName] = useState('')
@@ -25,7 +25,7 @@ const Sidebar = () => {
     useEffect(() => {
         (async () => {
             const data = await getProjects()
-            setProjects( data.data.projects )
+            setProjects(data.data.projects)
             setLoading(false)
         })()
     }, [id, setProjects])
@@ -34,19 +34,19 @@ const Sidebar = () => {
         e.preventDefault()
         await createProject(newProjectName);
         const data = await getProjects()
-        setProjects( data.data.projects )
+        setProjects(data.data.projects)
         setShowCreateProjectForm(false)
     }
 
-    if(loading) {
+    if (loading) {
         return <></>
     }
 
-    return(
+    return (
         <aside className={styles.bar}>
             <ul>
-                <ProjectButton 
-                    name="All Tasks" 
+                <ProjectButton
+                    name="All Tasks"
                     handleOnClick={() => {
                         navigate(`../project`)
                     }}
@@ -57,11 +57,11 @@ const Sidebar = () => {
             <ul>
                 {
                     projects.map((project) => (
-                        <ProjectButton 
-                            key={project._id} 
+                        <ProjectButton
+                            key={project._id}
                             active={window.location.pathname === `/project/${project._id}` ? "active" : null}
-                            id={project._id} 
-                            name={project.name} 
+                            id={project._id}
+                            name={project.name}
                             handleOnClick={() => {
                                 navigate(`../project/${project._id}`)
                             }}
@@ -69,19 +69,19 @@ const Sidebar = () => {
                     ))
                 }
             </ul>
-            { showCreateProjectForm &&
-                <NewProject 
-                    handleSubmit={handleCreateProject} 
+            {showCreateProjectForm &&
+                <NewProject
+                    handleSubmit={handleCreateProject}
                     handleClose={() => setShowCreateProjectForm(false)}
                     handleNameChange={(e) => setNewProjectName(e.target.value)}
                 />
-            }       
-            <button 
-                className={styles.new_project_button} 
+            }
+            <div
+                className={styles.new_project_button}
                 onClick={() => setShowCreateProjectForm(true)}>
                 <AiFillPlusCircle className={styles.icon} />
                 <p>New Project</p>
-            </button>
+            </div>
         </aside>
     )
 }

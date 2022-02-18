@@ -64,6 +64,8 @@
     font-size: 1.2em;
     margin-top: 2em;
     margin-left: 1em;
+    cursor: pointer;
+    transition: .3s;
 }
 
 .new_project_button:hover {
@@ -72,4 +74,12 @@
 
 .icon {
     font-size: 1.5em;
+    transition: 1s;
 }
+
+.new_project_button:hover .icon{
+    transform: rotate(1turn) scale(1.1);
+}
+
+
+
