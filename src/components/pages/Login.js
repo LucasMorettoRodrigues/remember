@@ -22,18 +22,18 @@ const Login = () => {
         } catch {
             setError('Failed to login.')
         }
-        
+
     }
 
     return (
-        <div className={styles.container}>  
+        <div className={styles.container}>
             <div className={styles.form}>
                 <h2>Sign In</h2>
                 <form onSubmit={handleSubmit}>
-                    <Input type="text" id="user" text="User" onChange={(e) => setUserName(e.target.value)}/>
-                    <Input type="text" id="password" text="Password" onChange={(e) => setPassword(e.target.value)}/>
-                    { error && <p>{error}</p>}
-                    <SubmitButton text="Sing in"/>
+                    <Input type="text" id="user" text="User" onChange={(e) => setUserName(e.target.value)} />
+                    <Input type="password" id="password" text="Password" onChange={(e) => setPassword(e.target.value)} />
+                    {error && <p>{error}</p>}
+                    <SubmitButton text="Sing in" />
                 </form>
             </div>
         </div>

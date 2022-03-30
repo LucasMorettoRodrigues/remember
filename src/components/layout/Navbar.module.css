@@ -7,7 +7,7 @@
     margin: auto;
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 .navbar a {
@@ -15,7 +15,7 @@
 }
 
 .navbar h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     color: #222;
 }
 
@@ -27,7 +27,6 @@
 .navbar ul li {
     display: inline-block;
     list-style: none;
-    margin-right: 2em;
     font-weight: bold;
     font-size: 1.1em;
 }
@@ -35,6 +34,7 @@
 .navbar ul li a {
     display: inline-block;
     color: rgb(0, 61, 25);
+    padding: 20px;
     transition: 0.5s;
 }
 

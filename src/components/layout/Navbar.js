@@ -11,29 +11,27 @@ const Navbar = () => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navbar_container}>
-                <Link to='/'>
-                    <h1>Remember</h1>
-                </Link>
-                {   user
-                        ?   <ul>
-                                <li>
-                                    <p>Welcome {user.name}</p> 
-                                </li>
-                                <li>
-                                    <Link onClick={logout} to='/'>Logout</Link>
-                                </li>
-                            </ul>
-                        :   <ul>
-                                <li>
-                                    <Link to='/login'>Login</Link>
-                                </li>
-                                <li>
-                                    <Link to='/register'>Register</Link>
-                                </li>
-                            </ul>
+                <h1>Remember</h1>
+                {user
+                    ? <ul>
+                        <li>
+                            <p>Welcome {user.name}</p>
+                        </li>
+                        <li>
+                            <Link onClick={logout} to='/'>Logout</Link>
+                        </li>
+                    </ul>
+                    : <ul>
+                        <li>
+                            <Link to='/login'>Login</Link>
+                        </li>
+                        <li>
+                            <Link to='/register'>Register</Link>
+                        </li>
+                    </ul>
                 }
             </div>
-        </nav>    
+        </nav>
     )
 }
 

@@ -12,6 +12,7 @@
     background-color: rgb(34, 170, 136);
     font-size: 1em;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .button input:hover {
