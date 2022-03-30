@@ -11,15 +11,15 @@ import { AuthProvider, AuthContext } from './contexts/auth'
 import { useContext } from 'react';
 
 function App() {
-  
+
   const Private = ({ children }) => {
     const { authenticated, loading } = useContext(AuthContext)
 
-    if(loading) {
+    if (loading) {
       return <div className="loading">Loading...</div>
     }
 
-    if(!authenticated) {
+    if (!authenticated) {
       return <Navigate to="/Login/" />
     }
 
@@ -30,14 +30,14 @@ function App() {
     <Router>
       <AuthProvider>
         <Navbar />
-          <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/project' element={<Private><Project /></Private>} />
-            <Route path='/project/:id' element={<Private><Project /></Private>} />
-            <Route path='/*'  element={<PageNotFound />} />
-          </Routes>
+        <Routes>
+          <Route exact path='/remember' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/project' element={<Private><Project /></Private>} />
+          <Route path='/project/:id' element={<Private><Project /></Private>} />
+          <Route path='/*' element={<PageNotFound />} />
+        </Routes>
         <Footer />
       </AuthProvider>
     </Router>
