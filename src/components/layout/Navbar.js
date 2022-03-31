@@ -18,7 +18,7 @@ const Navbar = () => {
                             <p>Welcome {user.name}</p>
                         </li>
                         <li>
-                            <Link onClick={logout} to='/'>Logout</Link>
+                            <Link onClick={logout} to='/login'>Logout</Link>
                         </li>
                     </ul>
                     : <ul>
