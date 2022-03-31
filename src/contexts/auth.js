@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
         const recoveredUser = localStorage.getItem('user')
         const token = localStorage.getItem('token')
 
-        if(recoveredUser) {
+        if (recoveredUser) {
             setUser(JSON.parse(recoveredUser))
         }
 
@@ -31,24 +31,24 @@ export const AuthProvider = ({ children }) => {
         setUser(loggedUser)
         navigate('/project')
     }
-    
+
     const logout = () => {
         localStorage.removeItem("user")
         localStorage.removeItem("token")
         api.defaults.headers.Authorization = null
         setUser(null)
-        navigate('/login')
     }
 
     return (
-        <AuthContext.Provider 
-            value={{ authenticated: !!user, 
-                    user, 
-                    login, 
-                    logout,
-                    loading
-                }}>
-            { !loading && children }
+        <AuthContext.Provider
+            value={{
+                authenticated: !!user,
+                user,
+                login,
+                logout,
+                loading
+            }}>
+            {!loading && children}
         </AuthContext.Provider>
     )
 }
