@@ -31,14 +31,17 @@
     font-size: 1.1em;
 }
 
-.navbar ul li a {
+.navbar ul li a,
+.navbar ul li span {
     display: inline-block;
     color: rgb(0, 61, 25);
     padding: 20px;
     transition: 0.5s;
+    cursor: pointer;
 }
 
-.navbar ul li a:hover {
+.navbar ul li a:hover,
+.navbar ul li span:hover {
     transform: translate(0px, -5px);
     color: white;
 }
